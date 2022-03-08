@@ -2,6 +2,7 @@ package com.ecommerce.GameStore.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,9 @@ public class Produto {
 	@NotNull(message = "Preço é obrigatório!")
 	@Positive(message = "O preço deve ser maior do que zero!")
 	private BigDecimal preco;
+	
+	@Column(columnDefinition = "integer default 0")
+	private int curtir;// método simulador de curtida
 
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
@@ -38,6 +42,14 @@ public class Produto {
 
 	public Long getId() {
 		return id;
+	}
+
+	public int getCurtir() {
+		return curtir;
+	}
+
+	public void setCurtir(int curtir) {
+		this.curtir = curtir;
 	}
 
 	public void setId(Long id) {
